@@ -8,7 +8,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:share/share.dart';
 
 import '../../../data/entity/invoice_details_response.dart';
-import '../../../data/network/dio_client.dart';
+import '../../../data/network/http_client.dart';
 import 'package:pdf/widgets.dart' as pw;
 
 import 'package:esc_pos_utils/esc_pos_utils.dart';
@@ -38,7 +38,7 @@ class InvoiceDetailController extends GetxController {
   }
 
   void getInvoices() async {
-    DioClient().getInvoicesDetails(accessToken: accessToken!).then((value) {
+    HttpClient().getInvoicesDetails(accessToken: accessToken!).then((value) {
       invoiceData = value.invoiceData;
       isLoading.value = false;
     }).onError((error, stackTrace) {

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:queberry_test_pos_print_zoho_invoice/app/data/network/dio_client.dart';
+import 'package:queberry_test_pos_print_zoho_invoice/app/data/network/http_client.dart';
 
 import '../../../data/entity/invoices_response.dart';
 
@@ -27,9 +27,9 @@ class InvoiceController extends GetxController {
   }
 
   void getInvoices() async {
-    DioClient().getAccessToken(code: code!).then((value) {
+    HttpClient().getAccessToken(code: code!).then((value) {
       accessToken = value.accessToken;
-      DioClient().getInvoices(accessToken: value.accessToken!).then((value) {
+      HttpClient().getInvoices(accessToken: value.accessToken!).then((value) {
         invoiceList.value = value.invoices!;
         isLoading.value = false;
       }).onError((error, stackTrace) {

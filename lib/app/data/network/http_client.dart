@@ -3,7 +3,7 @@ import '../entity/invoice_details_response.dart';
 import '../entity/access_token.dart';
 import 'package:http/http.dart' as http;
 
-class DioClient {
+class HttpClient {
   Future<AccessToken> getAccessToken({required String code}) async {
     var accessTokenResponse = await http.post(Uri.parse(
         'https://accounts.zoho.com/oauth/v2/token?code=$code&client_id=1000.F7W17ACNFC39ON5UCTTIMG7YLMQOXJ&client_secret=44ff8e6c580b5695c9ecbdd5189ea81b814f30cd0c&redirect_uri=https://nowfal.in&grant_type=authorization_code'));
